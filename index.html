@@ -7,90 +7,188 @@
     <title>Projet Infra</title>
 </head>
 <body>
+    <div>cliquez sur les images</div>
     <div id="titre">
-        <p id="titre2">Mise en place d'une structure CLIENT-SERVEUR</p>
+        Mise en place d'une structure CLIENT-SERVEUR
     </div>
     <div id="attentes">
-        
+        <div id="mise" class="toggle-content">
+            <h1>Mise en place d’un SI d’une petite entreprise.
+            </h1>
+        </div>
         <div id="objectifs">
-            <p id="titree">Objectifs :</p>
-            <ul>
-                <div id="tout">
-                    Le but va être de proposer une architecture comprenant :
-                    <div id="parefeu" class="toggle-content">
-                        <li>1 Un parefeu (avec DHCP, DNS, filtrage réseau, routage…)
-                            <span class="arrow right">⬇</span>
-                        </li>
+            <p id="titre">Objectifs :</p>
+                Le but va être de proposer une architecture comprenant :
+                <div id="parefeu" class="toggle-content">
+                    <p class="text">1 Un parefeu (avec DHCP, DNS, filtrage réseau, routage…)
+                        <span class="arrow right">⬇</span>
+                    </p>
+                    <div class="content">
                         <p>Voici donc le parefeu fonctionne sur la machine pfSense.</p>
+                        <img src="linux1.png" id="image" class="clickable-image">
+                        <p>A ce moment il n'était pas configurer donc il refusé toutes les entrées,<br>
+                             on a donc modifié les rules du firewall<br> afin qu'il accepte les entrée de :80 et de :443 qui sont le serveur web et sauvegarde web
+                        </p>
                     </div>
-                    <div id="clients" class="toggle-content">
-                        <li>2 clients (1 Windows et 1 Linux)
-                            <span class="arrow right">⬇</span>
-                        </li>
-                        <p>Les deux clients sont des machines virtuelles (VMs) qui tournent sur VirtualBox.</p>
+                </div>
+                <div id="clients" class="toggle-content">
+                    <p class="text">2 clients (1 Windows et 1 Linux)
+                        <span class="arrow right">⬇</span>
+                    </p>
+                    <div class="content" >
+                        <div id="client">
+                            <p>Voici donc les deux clients qui sont connecté au réseau</p>
+                            <img src="linuxping.png" id="image" class="clickable-image">
+
+                            <img src="windows.png" id="image" class="clickable-image">
+                            <p>on voit qu'on arrive a ping la  vm du firewall depuis la machine windows et linux.</p>
+                        </div>
                     </div>
-                    <div id="serveur-sauvegarde" class="toggle-content">
-                        <li>1 serveur linux (sauvegarde du site web)
-                            <span class="arrow right">⬇</span>
-                        </li>
-                        <p>Le serveur linux de sauvegarde est une machine virtuelle (VM) qui tourne sur VirtualBox.</p>
+                </div>
+                <div id="serveur-sauvegarde" class="toggle-content">
+                    <p class="text">1 serveur linux (sauvegarde du site web)
+                        <span class="arrow right">⬇</span>
+                    </p>
+                    <div class="content">
+                        <img src="hebergement.png" id="image" class="clickable-image">
+
+                        <p>le serveur linux ici-présent nous permet de recuperer les données<br> de notre site web afin de les sauvegarder,<br> on la programmer pour qu'il le fasse automatiquement </p>
                     </div>
-                    <div id="serveur-web" class="toggle-content">
-                        <li>1 serveur linux (hébergement site web)
-                            <span class="arrow right">⬇</span>
-                        </li>
-                        <p>Le serveur linux d’hébergement du site web est une machine virtuelle (VM) qui tourne sur VirtualBox.</p>
+                </div>
+                <div id="serveur-web" class="toggle-content">
+                    <p class="text">1 serveur linux (hébergement site web)
+                        <span class="arrow right">⬇</span>
+                    </p>
+                    <div class="content">
+                        <img src="hebergement.png" id="image" class="clickable-image">
+                        <p>on voit bien que le site web est hebergé sur le port 192.168.1.102<br> qui correspond a l'outil pfsens que nous avons utiliser <br> pour hebergé notre site web</p>
                     </div>
-                </div>  
-            </ul>
+                </div>
             <p>L’accès au serveur linux de sauvegarde peut se faire seulement via le réseau interne de la société (soit les deux clients et le serveur web).</p>
         </div>
-        <div id="maquette" >
-            <p id="titree">Maquette attendue
-            </p>
-            <ul>
-                <div id="schema-reseau" class="toggle-content">
-                    <li>Schéma réseau
+    </div>
+        <div id="attentes">
+            <div id="objectifs">
+            <p id="titre">Maquette attendue</p>
+                
+                <div class="toggle-content">
+                    <p class="text"></class>Schéma réseau
                         <span class="arrow right">⬇</span>
-                    </li>
+                    </p>
+                    <div class="content">
+                        <img src="schéma.jpg" id="image" class="clickable-image">
+                        <h3>Description</h3>
+                        <p>Internet : Connecté au pare-feu pfSense.</p>
+                        <p>pfSense Firewall : Point central du réseau qui connecte tous les autres composants :</p>
+                        <ul>
+                            <p></p></li>Web Server (Apache) : Serveur web hébergé, connecté au pare-feu pfSense.</p></p></li>
+                            <p></p></li>Backup Web Server : Serveur de sauvegarde du site web, connecté au pare-feu pfSense.</p></p></li>
+                            <p></p></li>Windows Client : Client Windows connecté au pare-feu pfSense.</p></p></li>
+                            <p></p></li>Linux Client : Client Linux connecté au pare-feu pfSense.</p></p></li>
+                        </ul>
+                        <h3>Configuration Réseau</h3>
+                        <p><strong>pfSense Firewall</strong></p>
+                        <ul>
+                            <p></p></li>Règles de redirection NAT pour HTTP (port 80) et HTTPS (port 443) vers le Web Server.</p></p></li>
+                            <p></p></li>Règles de pare-feu pour permettre le trafic HTTP et HTTPS.</p></p></li>
+                        </ul>
+                        <p><strong>Web Server (Apache)</strong></p>
+                        <ul>
+                            <p></p></li>Héberge le site web principal.</p></p></li>
+                        </ul>
+                        <p><strong>Backup Web Server</strong></p>
+                        <ul>
+                            <p></p></li>Utilisé pour les sauvegardes du site web.</p></p></li>
+                        </ul>
+                        <p><strong>Windows Client</strong></p>
+                        <ul>
+                            <p></p></li>Connecté pour accéder au site web et aux services du réseau.</p></p></li>
+                        </ul>
+                        <p><strong>Linux Client</strong></p>
+                        <ul>
+                            <p></p></li>Connecté pour accéder au site web et aux services du réseau.</p></p></li>
+                        </ul>
+                    </div>
+                </p></p></li>
+                    </div>
                 </div>
-                <div id="plan-adressage" class="toggle-content">
-                    <li>Plan d’adressage
+                <div class="toggle-content">
+                    <p class="text">Plan d’adressage
                         <span class="arrow right">⬇</span>
-                    </li>
+                    </p>
+                    <div class="content">
+                        <img src="adressage.png" id="image" class="clickable-image">
+                        <p>Description :</p>
+                        <ul>
+                            <li><strong>pfSense Firewall (192.168.1.1)</strong></li>
+                            <ul>
+                                <div>Acte comme la passerelle pour tous les appareils du réseau.</div>
+                                <div>Fournit des services DHCP pour distribuer les adresses IP.</div>
+                                <div>Gère le routage et le filtrage du trafic réseau.</div>
+                            </ul>
+                            <div><strong>Web Server (Apache) (192.168.1.102)</strong></div>
+                            <ul>
+                                <div>Héberge le site web principal accessible via les ports 80 (HTTP) et 443 (HTTPS).</div>
+                            </ul>
+                            <div><strong>Backup Web Server (192.168.1.103)</strong></div>
+                            <ul>
+                                <div>Utilisé pour les sauvegardes du site web principal.</div>
+                            </ul>
+                            <div><strong>Windows Client (192.168.1.104)</strong></div>
+                            <ul>
+                                <div>Utilisé pour accéder au site web et aux autres services du réseau.</div>
+                            </ul>
+                            <div><strong>Linux Client (192.168.1.105)</strong></div>
+                            <ul>
+                                <div>Utilisé pour accéder au site web et aux autres services du réseau.</div>
+                            </ul>
+                        </ul>
+                    </div>
                 </div>
-                <div id="vm-interconnect" class="toggle-content">
-                    <li>Différentes VMs (possibilité de s’interconnecter via switch ou wifi)
+                <div class="toggle-content">
+                    <p class="text">Différentes VMs (possibilité de s’interconnecter via switch ou wifi)
                         <span class="arrow right">⬇</span>
-                    </li>
+                    </p>
+                    <div class="content">
+                        <img src="vms.png" id="image" class="clickable-image">
+                        <p>on a donc toute c'est Machine Virtuel, elle est sont entre connecté par lan </p>
+                        <img src="connection1.png" id="image" class="clickable-image">
+                        <div class="description">
+                            <div class="description-title"><strong>pfSense :</strong></div>
+                            <p>Adapter 1 : Connecté à l'Internet via NAT ou Bridged Adapter.</p>
+                            <p>Adapter 2 : Connecté à un réseau interne, nommé LAN2 (ou tout autre nom).</p>
+                        </div>
+                        <div class="description">
+                            <div class="description-title">Serveur Web (192.168.1.102) :</div>
+                            <p>Adapter 1 : Connecté au réseau interne LAN2.</p>
+                        </div>
+                        <div class="description">
+                            <div class="description-title">Serveur de Sauvegarde (192.168.1.103) :</div>
+                            <p>Adapter 1 : Connecté au réseau interne LAN2.</p>
+                        </div>
+                        <div class="description">
+                            <div class="description-title">Clients (Windows/Linux) :</div>
+                            <p>Adapter 1 : Connecté au réseau interne LAN2.</p>
+                        </div>
+
+                    </div>
                 </div>
-                <div id="tableau-filtrage" class="toggle-content">
-                    <li>Tableau de filtrage
+                
+                <div class="toggle-content">
+                    <p class="text">Sauvegarde et restauration fonctionnelle automatique (des fichiers sources du site web)
                         <span class="arrow right">⬇</span>
-                    </li>
+                    </p>
+                    <div class="content">
+                        <!-- Contenu additionnel pour la sauvegarde et restauration -->
+                    </div>
                 </div>
-                <div id="sauvegarde-restauration" class="toggle-content">
-                    <li>Sauvegarde et restauration fonctionnelle (des fichiers sources du site web)
-                        <span class="arrow right">⬇</span>
-                    </li>
-                </div>
-                <div id="sauvegarde-automatique" class="toggle-content">
-                    <li>La sauvegarde doit être automatisée d’une façon ou d’une autre (tous les jours par exemple)
-                        <span class="arrow right">⬇</span>
-                    </li>
-                </div>
-                <div id="documentation-restauration" class="toggle-content">
-                    <li>Une documentation pour la restauration
-                        <span class="arrow right">⬇</span>
-                    </li>
-                </div>
-                <div id="site-web" class="toggle-content">
-                    <li>Un site web tournant sur Apache ou Nginx avec le détail du projet (schémas, documentations…)
-                        <span class="arrow right">⬇</span>
-                    </li>
-                </div>
-            </ul>
-        </div>
+            </div>
+        </div> 
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
     </div>
 
     <script src="index.js"></script>

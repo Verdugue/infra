@@ -7,19 +7,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ajouter un écouteur d'événement pour chaque élément
     toggleElements.forEach(function(element) {
         element.addEventListener('click', function() {
-            // Cibler le paragraphe à l'intérieur de l'élément cliqué
-            var p = element.querySelector('p');
+            // Empêcher la propagation si on clique sur une image
+            if (event.target.tagName === 'IMG') {
+                return;
+            }
+
+            // Cibler le contenu à l'intérieur de l'élément cliqué
+            var content = element.querySelector('.content');
             var arrow = element.querySelector('.arrow');
-            if (p) {
-                // Basculer l'affichage du paragraphe
-                if (p.style.display === 'none' || p.style.display === '') {
-                    p.style.display = 'block';
+            if (content) {
+                // Basculer l'affichage du contenu
+                if (content.style.display === 'none' || content.style.display === '') {
+                    content.style.display = 'block';
                     if (arrow) {
                         arrow.classList.remove('right');
                         arrow.classList.add('down');
                     }
                 } else {
-                    p.style.display = 'none';
+                    content.style.display = 'none';
                     if (arrow) {
                         arrow.classList.remove('down');
                         arrow.classList.add('right');
@@ -28,4 +33,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Modal image functionality
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var images = document.querySelectorAll(".clickable-image");
+    var span = document.getElementsByClassName("close")[0];
+
+    images.forEach(function(img) {
+        img.addEventListener('click', function(event) {
+            event.stopPropagation(); // Empêche la propagation de l'événement de clic
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        });
+    });
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 });
+
+
