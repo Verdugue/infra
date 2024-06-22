@@ -50,7 +50,7 @@
                         <span class="arrow right">⬇</span>
                     </p>
                     <div class="content">
-                        <img src="hebergement.png" id="image" class="clickable-image">
+                        <img src="sauvergarde.png" id="image" class="clickable-image">
 
                         <p>le serveur linux ici-présent nous permet de recuperer les données<br> de notre site web afin de les sauvegarder,<br> on la programmer pour qu'il le fasse automatiquement </p>
                     </div>
@@ -76,7 +76,7 @@
                         <span class="arrow right">⬇</span>
                     </p>
                     <div class="content">
-                        <img src="schéma.jpg" id="image" class="clickable-image">
+                        <img src="schéma.png" id="image" class="clickable-image">
                         <h3>Description</h3>
                         <p>Internet : Connecté au pare-feu pfSense.</p>
                         <p>pfSense Firewall : Point central du réseau qui connecte tous les autres composants :</p>
@@ -179,7 +179,28 @@
                         <span class="arrow right">⬇</span>
                     </p>
                     <div class="content">
-                        <!-- Contenu additionnel pour la sauvegarde et restauration -->
+                        <p>Mettre en place Cron pour faire que la sauvergarde se fasse chaque jours a minuit.</p>
+                        <p>avec la commande 0 0 * * * /usr/local/bin/backup.sh</p>
+                        <img src="script2.png" id="image" class="clickable-image">
+                    </div>
+                </div>
+                
+                <div class="toggle-content">
+                    <p class="text">Une documentation pour la restauration
+                        <span class="arrow right">⬇</span>
+                    </p>
+                    <div class="content">
+                        <p>Afin de créé la sauvergarde/backup du site web il faut :</p>
+                        <p>1. Crée le fichier qui sera partager entre le serveur web et le serveur de sauvegarde.</p>
+                        <img src="folder.png" id="image" class="clickable-image">
+                        <p>2. Installer le fichier sur chaque serveur web et sauvegarde </p>
+                        <img src="folder2.png" id="image" class="clickable-image">
+                        <p>3. Crée un script afin de configurer le backup et l'executable</p>
+                        <img src="script1.png" id="image" class="clickable-image">
+                        <p>4. Checker si la sauvegarde a bien été effectuer.</p>
+                        <p> avec la commande : sudo rsync -avz --delete /var/www/html /mnt/shared-backup</p>
+                        <p>Il faut run sync manuellement pour verifier la sauvegarde</p>
+                        <img src="sauvergarde.png" id="image" class="clickable-image">
                     </div>
                 </div>
             </div>
