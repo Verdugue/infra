@@ -1,0 +1,74 @@
+@font-face {
+    font-family: myFont;
+    src: url(SpaceGrotesk-VariableFont_wght.ttf);
+  }
+
+body {
+    background-color: rgba(0, 0, 0, 0.61);
+    font-family: myFont;
+
+}
+
+#objectifs {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+#tout {
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+}
+
+
+        .toggle-content {
+            cursor: pointer;
+        }
+        .toggle-content .arrow {
+            display: inline-block;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+        .toggle-content .arrow.down {
+            transform: rotate(0deg);
+        }
+        .toggle-content .arrow.right {
+            transform: rotate(90deg);
+        }
+        .toggle-content p {
+            display: none;
+        }
+   
+
+#mise  {
+    font-size: 30px;
+
+}
+
+#titree {
+font-size: 30px;
+}
+
+#titre {
+    
+    width:auto;
+    height:100px;
+    align-items: center;
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+    color:rgb(255, 255, 255);
+
+}
+
+#attentes {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+}
+

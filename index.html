@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Infra</title>
+</head>
+<body>
+    <div id="titre">
+        <p id="titre2">Mise en place d'une structure CLIENT-SERVEUR</p>
+    </div>
+    <div id="attentes">
+        
+        <div id="objectifs">
+            <p id="titree">Objectifs :</p>
+            <ul>
+                <div id="tout">
+                    Le but va être de proposer une architecture comprenant :
+                    <div id="parefeu" class="toggle-content">
+                        <li>1 Un parefeu (avec DHCP, DNS, filtrage réseau, routage…)
+                            <span class="arrow right">⬇</span>
+                        </li>
+                        <p>Voici donc le parefeu fonctionne sur la machine pfSense.</p>
+                    </div>
+                    <div id="clients" class="toggle-content">
+                        <li>2 clients (1 Windows et 1 Linux)
+                            <span class="arrow right">⬇</span>
+                        </li>
+                        <p>Les deux clients sont des machines virtuelles (VMs) qui tournent sur VirtualBox.</p>
+                    </div>
+                    <div id="serveur-sauvegarde" class="toggle-content">
+                        <li>1 serveur linux (sauvegarde du site web)
+                            <span class="arrow right">⬇</span>
+                        </li>
+                        <p>Le serveur linux de sauvegarde est une machine virtuelle (VM) qui tourne sur VirtualBox.</p>
+                    </div>
+                    <div id="serveur-web" class="toggle-content">
+                        <li>1 serveur linux (hébergement site web)
+                            <span class="arrow right">⬇</span>
+                        </li>
+                        <p>Le serveur linux d’hébergement du site web est une machine virtuelle (VM) qui tourne sur VirtualBox.</p>
+                    </div>
+                </div>  
+            </ul>
+            <p>L’accès au serveur linux de sauvegarde peut se faire seulement via le réseau interne de la société (soit les deux clients et le serveur web).</p>
+        </div>
+        <div id="maquette" >
+            <p id="titree">Maquette attendue
+            </p>
+            <ul>
+                <div id="schema-reseau" class="toggle-content">
+                    <li>Schéma réseau
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="plan-adressage" class="toggle-content">
+                    <li>Plan d’adressage
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="vm-interconnect" class="toggle-content">
+                    <li>Différentes VMs (possibilité de s’interconnecter via switch ou wifi)
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="tableau-filtrage" class="toggle-content">
+                    <li>Tableau de filtrage
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="sauvegarde-restauration" class="toggle-content">
+                    <li>Sauvegarde et restauration fonctionnelle (des fichiers sources du site web)
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="sauvegarde-automatique" class="toggle-content">
+                    <li>La sauvegarde doit être automatisée d’une façon ou d’une autre (tous les jours par exemple)
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="documentation-restauration" class="toggle-content">
+                    <li>Une documentation pour la restauration
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+                <div id="site-web" class="toggle-content">
+                    <li>Un site web tournant sur Apache ou Nginx avec le détail du projet (schémas, documentations…)
+                        <span class="arrow right">⬇</span>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
